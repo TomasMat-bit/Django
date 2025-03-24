@@ -1,3 +1,4 @@
+from django.db.models.fields import return_None
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -25,4 +26,10 @@ def naujienos(request):
     }
     return render(request, 'naujienos.html', kontekstas)
 
+def autorius(request):
+    kontekstas = {
+        'vardas' : 'Jonas',
+        'pomegiai' : ['Programavimas', 'Dviraciai', 'Kava'],
+    }
+    return render(request, 'autorius.html', kontekstas)
 
