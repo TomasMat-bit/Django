@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija į renginį</title>
+</head>
+<body>
+    <h1>Registracija į renginį</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ forma.as_p }}
+        <button type="submit">Užsiregistruoti</button>
+    </form>
+
+    {% if forma.errors %}
+        <div style="color: red;">
+            <ul>
+                {% for error in forma.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
