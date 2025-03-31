@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prietai prisijungti</title>
+    <link rel="stylesheet" href="{% static 'sveikinimas/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Prietai prisijungti</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Prisijungti</button>
+        </form>
+        <div class="header">
+            <a href="{% url 'registracija' %}">Neturite paskyros? Užsiregistruokite</a>
+        </div>
+    </div>
+</body>
+</html>
