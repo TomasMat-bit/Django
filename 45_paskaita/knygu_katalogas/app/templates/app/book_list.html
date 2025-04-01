@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knygų katalogas</title>
+</head>
+<body>
+    <h1>Knygų katalogas</h1>
+
+    <form method="get" action="{% url 'book_list' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Ieškoti pagal pavadinimą arba autorių">
+        <button type="submit">Ieškoti</button>
+    </form>
+
+    <ul>
+        {% for book in page_obj %}
+            <li>
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }}</p>
+                <p>{{ book.description }}</p>
+            </li>
+        {% empty %}
+            <li>Rezultatų nerasta</li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if page_obj.has_previous %}
+            <a href="?page=1&q={{ query }}">Pirmas</a>
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ query }}">Ankstesnis</a>
+        {% endif %}
+
+        <span>Puslapis {{ page_obj.number }} iš {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ query }}">Kitas</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}">Paskutinis</a>
+        {% endif %}
+    </div>
+</body>
+</html>
