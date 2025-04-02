@@ -1,0 +1,8 @@
+<h1>Ar tikrai norite istrinti</h1>
+
+<p>{{ post.title  }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Taip, Istrinti</button>
+</form>

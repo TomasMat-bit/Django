@@ -1,0 +1,9 @@
+
+
+
+<h1>{{ post.title }}</h1>
+<h1>{{ post.author }}</h1>
+
+
+<a href="{% url 'post_update' post.pk %}">Redaguoti</a>
+<a href="{% url 'post_list' %}">Atgal</a>
