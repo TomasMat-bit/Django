@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Knygų sąrašas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Pridėti Font Awesome ikonas -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .add-book {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Knygų sąrašas</h1>
+
+<div class="add-book">
+    <a href="{% url 'book_create' %}" class="btn">Pridėti naują knygą</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pavadinimas</th>
+            <th>Autorius</th>
+            <th>Veiksmai</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>
+                    <a href="{% url 'book_detail' book.pk %}" class="btn">Peržiūrėti</a>
+                    <a href="{% url 'book_delete' book.pk %}" class="btn">Pašalinti</a>  <!-- Pridėjome nuorodą į pašalinimą -->
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

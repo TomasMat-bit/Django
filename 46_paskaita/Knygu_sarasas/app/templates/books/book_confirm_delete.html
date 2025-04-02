@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Patvirtinti pašalinimą</title>
+</head>
+<body>
+
+<h1>Ar tikrai norite pašalinti knygą "{{ book.title }}"?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Taip, pašalinti</button>
+    <a href="{% url 'book_list' %}">Atšaukti</a>
+</form>
+
+</body>
+</html>

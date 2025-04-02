@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pridėti naują knygą</title>
+</head>
+<body>
+    <h1>Pridėti naują knygą</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Pridėti</button>
+    </form>
+    <a href="{% url 'book_list' %}">Grįžti į sąrašą</a>
+</body>
+</html>
