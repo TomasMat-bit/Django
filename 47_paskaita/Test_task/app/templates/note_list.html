@@ -1,0 +1,12 @@
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Visi užrašai</h1>
+<ul>
+  {% for note in notes %}
+    <li>{{ note.title }}: {{ note.content }}</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'create_note' %}">Sukurti naują užrašą</a>
+</body>
