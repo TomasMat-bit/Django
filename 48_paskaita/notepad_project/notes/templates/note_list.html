@@ -1,0 +1,7 @@
+<h1>Uzrasai</h1>
+<ul>
+    {% for note in notes %}
+    <li><strong>{{ note.title }}</strong> {{ note.content }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'note_create' %}" >Naujas Uzrasas</a>
